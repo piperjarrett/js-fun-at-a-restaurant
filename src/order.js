@@ -19,14 +19,12 @@ function listItems(deliveryOrders) {
   return item.join(', ')
 }
 function searchOrder(deliveryOrders, order) {
-//console.log(deliveryOrders.length)
-var inList = false
-for (var i = 0; i < deliveryOrders.length; i++) {
-if (deliveryOrders[i].item === order)
- inList = true
-
+  var inList = false
+  for (var i = 0; i < deliveryOrders.length; i++) {
+    if (deliveryOrders[i].item === order)
+    inList = true
 }
-return inList
+  return inList
 }
 module.exports = {
   takeOrder,
