@@ -1,41 +1,40 @@
 function createRestaurant(name) {
   var pizzaRestaurant = {
       name,
-      menus: { breakfast: [], lunch: [], dinner: [] }
+      menus: {
+        breakfast: [],
+        lunch: [],
+        dinner: [] }
   }
   return pizzaRestaurant
 }
 
- function addMenuItem(pizzaRestaurant, bbqPizza) {
+ function addMenuItem(pizzaRestaurant, food) {
 
-   if (bbqPizza.type === "lunch" && !pizzaRestaurant.menus.lunch.includes(bbqPizza)) {
-     pizzaRestaurant.menus.lunch.push(bbqPizza)
-   }
-   else if (bbqPizza.type === "breakfast" && !pizzaRestaurant.menus.breakfast.includes(bbqPizza)) {
-     pizzaRestaurant.menus.breakfast.push(bbqPizza)
-   }
-   else if (bbqPizza.type === "dinner" && !pizzaRestaurant.menus.dinner.includes(bbqPizza)) {
-    pizzaRestaurant.menus.dinner.push(bbqPizza)
+   if (food.type === "lunch" && !pizzaRestaurant.menus.lunch.includes(food)) {
+     pizzaRestaurant.menus.lunch.push(food)
+   } else if (food.type === "breakfast" && !pizzaRestaurant.menus.breakfast.includes(food)) {
+     pizzaRestaurant.menus.breakfast.push(food)
+   } else if (food.type === "dinner" && !pizzaRestaurant.menus.dinner.includes(food)) {
+    pizzaRestaurant.menus.dinner.push(food)
   }
 }
-function removeMenuItem(pizzaRestaurant, bbqPizza, type) {
-  var menuItem = pizzaRestaurant.menus[type]
-  for (var i = 0; i < menuItem.length; i++) {
-  if ( menuItem[i].name = bbqPizza) {
-    menuItem.splice(i, 1)
-    return `No one is eating our ${bbqPizza} - it has been removed from the ${type} menu!`
-  }
 
+function removeMenuItem(restaurant, food, type) {
+  var menuItem = restaurant.menus[type]
+  var message = ""
+  if (menuItem.length > 0) {
+    for (var i = 0; i < menuItem.length; i++) {
+      if ( menuItem[i].name === food) {
+        message = `No one is eating our ${food} - it has been removed from the ${type} menu!`
+        menuItem.splice(i, 1)
+    }
+    }
+  } else {
+    message = `Sorry, we don't sell ${food}, try adding a new recipe!`
   }
-
-  //else if (bbqPizza.type === "breakfast" && pizzaRestaurant.menus.includes(bbqPizza)) {
-    //pizzaRestaurant.menus.splice()
-  //}
-  //else if (bbqPizza.type === "dinner" && pizzaRestaurant.menus.includes(bbqPizza)) {
-   //pizzaRestaurant.menus.splice()
- //}
+  return message
 }
-
 
 
 module.exports = {
